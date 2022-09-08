@@ -14,7 +14,6 @@ function App({ lists, myLists, list, userEmail }) {
   return (
     <>
       <Navbar setChecklists={setChecklists} setMyChecklists={setMyChecklists} />
-      <Home />
       <Routes>
         <Route path="/" element={<Home checklists={checklists} setUser={setUser} />} />
         <Route path="/templates" element={<Templates checklists={checklists} setChecklists={setChecklists} />} />

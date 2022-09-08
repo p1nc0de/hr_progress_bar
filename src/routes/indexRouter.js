@@ -46,4 +46,16 @@ router.get('/checklists/:id', async (req, res) => {
   res.end(html);
 });
 
+router.get('/lists/:url', async (req, res) => {
+  const { url } = req.params;
+  const list = await CheckList.findOne({ where: { uniqueUrl: url } });
+  const initState = { path: req.originalUrl, list };
+  // const initState = { path: req.originalUrl };
+
+  const layoutComponent = React.createElement(Layout, { initState });
+  const html = renderToString(layoutComponent);
+  res.write('<!DOCTYPE html>');
+  res.end(html);
+});
+
 export default router;
