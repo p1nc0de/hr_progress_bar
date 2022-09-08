@@ -47,7 +47,6 @@ router.get('/checklists/:id', async (req, res) => {
   res.end(html);
 });
 
-
 router.get('/employees/new', async (req, res) => {
   const initState = { path: req.originalUrl };
   const layoutComponent = React.createElement(Layout, { initState });
@@ -58,8 +57,13 @@ router.get('/employees/new', async (req, res) => {
 
 router.get('/employees/:id', async (req, res) => {
   const { id } = req.params;
-  const newEmp = await CheckList.findByPk(id);
-  const initState = { path: req.originalUrl, newEmp };
+  const newEmployee = await CheckList.findByPk(id);
+  const initState = { path: req.originalUrl, newEmployee };
+  const layoutComponent = React.createElement(Layout, { initState });
+  const html = renderToString(layoutComponent);
+  res.write('<!DOCTYPE html>');
+  res.end(html);
+});
 
 router.get('/lists/:url', async (req, res) => {
   const { url } = req.params;
@@ -85,8 +89,8 @@ router.post('/employees/new', async (req, res) => {
         uniqueUrl: generateRandomString(),
       },
     });
-    if (created) {
-      res.redirect(`/employees/${newEmployee.id}`);
+    if (created && newEmployee.userName !== '' && newEmployee.menthorName !== '') {
+      res.json(newEmployee);
     } else {
       res.sendStatus(406);
     }
@@ -94,4 +98,5 @@ router.post('/employees/new', async (req, res) => {
     res.sendStatus(404);
   }
 });
+
 export default router;

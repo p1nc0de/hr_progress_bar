@@ -2,7 +2,7 @@ import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import Layout from '../components/Layout';
-import { UserHr } from '../db/models';
+import { UserHr, CheckList } from '../db/models';
 
 const router = express.Router();
 
@@ -25,6 +25,13 @@ router.delete('/:id', async (req, res) => {
   const { id } = req.params;
   await UserHr.destroy({ where: { id } });
   res.sendStatus(200);
+});
+
+// для вывода сообщения после создания листка адаптации
+router.get('/checklists/:id', async (req, res) => {
+  const { id } = req.params;
+  const list = await CheckList.findByPk(id);
+  res.json(list);
 });
 
 export default router;
