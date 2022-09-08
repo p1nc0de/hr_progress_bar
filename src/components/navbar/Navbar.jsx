@@ -1,12 +1,13 @@
 import React from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 
-export default function Navbar({ setChecklists, setMyChecklists }) {
+export default function Navbar({ setChecklists, setMyChecklists, userEmail }) {
   const navigate = useNavigate();
-  const logoutHandler = async () => {
-    const response = await fetch('api/v1/user/logout');
+  const logoutHandler = async (e) => {
+    e.preventDefault();
+    const response = await fetch('api/v1/users/logout');
     if (response.ok) {
-      setUset(null); // добавить
+    //   setUset(null); // добавить
       navigate('/');
     }
   };
@@ -46,7 +47,9 @@ export default function Navbar({ setChecklists, setMyChecklists }) {
             <li className="nav-item">
               <Link className="nav-link" to="/">Пользователи</Link>
             </li>
-            <button type="button" className="btn btn-success">LogIn</button>
+            <li className="nav-item">
+              <Link className="nav-link" to="/">Добавить листки адаптации</Link>
+            </li>
             <button type="button" className="btn btn-secondary" onClick={logoutHandler}>Logout</button>
           </ul>
         </div>
