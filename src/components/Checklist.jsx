@@ -1,7 +1,7 @@
 import React from 'react';
 
 //
-function Checklist({user}) {
+function Checklist({checklist}) {
   return (
     <>
       <div className="form-check">

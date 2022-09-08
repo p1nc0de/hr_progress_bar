@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
+import Checklist from '../db/models/checklist';
 import Home from './Home';
 import Navbar from './navbar/Navbar';
 import Templates from './Templates';
@@ -11,7 +12,7 @@ function App({ checklists }) {
       <Navbar />
       <Home />
       <Routes>
-        <Route path="/templates" element={<Templates checklists={checklists} />} />
+        <Route path="/templates" element={<Checklist checklists={checklists} />} />
         {/* <Route path="/templates/:userId" element={<MyTemplates />} />
         <Route path="/templates/" element={<MyTemplates />} /> */}
       </Routes>
