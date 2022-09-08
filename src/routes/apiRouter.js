@@ -24,6 +24,7 @@ router.post('/checklist', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
   await UserHr.destroy({ where: { id } });
-  res.sendStatys(200);
+  res.sendStatus(200);
 });
+
 export default router;

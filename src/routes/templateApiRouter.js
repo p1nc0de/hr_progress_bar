@@ -1,21 +1,17 @@
 import { Router } from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import Layout from '../components/Layout';
 import { CheckList } from '../db/models';
 
 const router = Router();
 
 router.get('/', async (req, res) => {
-  const checklists = await CheckList.findAll();
-  console.log(checklists);
-  console.log('TYPE!!');
-  console.log(typeof (checklists));
-  const initState = { path: req.originalUrl, checklists };
-  const layoutComponent = React.createElement(Layout, { initState });
-  const html = renderToString(layoutComponent);
-  res.write('<!DOCTYPE html>');
-  res.end(html);
+  const lists = await CheckList.findAll({ order: [['id', 'DESC']] });
+  res.json(lists);
+});
+
+router.get('/:id', async (req, res) => {
+  const { id } = req.params;
+  const myLists = await CheckList.findAll({ where: { author_id: id } });
+  res.json(myLists);
 });
 
 export default router;
