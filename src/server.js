@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import session from 'express-session';
 import store from 'session-file-store';
 import indexRouter from './routes/indexRouter';
-// import apiRouter from './routes/apiRouter';
+import apiRouter from './routes/apiRouter';
 
 require('dotenv').config();
 
@@ -30,6 +30,6 @@ app.use(express.json());
 app.use(session(sessionConfig));
 
 app.use('/', indexRouter);
-// app.use('/api/v1', apiRouter);
+app.use('/api/v1', apiRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
