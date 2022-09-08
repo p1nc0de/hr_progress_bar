@@ -7,19 +7,19 @@ import indexRouter from './routes/indexRouter';
 
 require('dotenv').config();
 
-const PORT = 3000;
+const PORT = process.env.DB_HOST || 3000;
 const app = express();
 const FileStore = store(session);
 
 const sessionConfig = {
-  name: 'user_sid', 				// Имя куки для хранения id сессии. По умолчанию - connect.sid
-  secret: process.env.SESSION_SECRET ?? 'test',	// Секретное слово для шифрования, может быть любым
-  resave: true, 				// Пересохранять ли куку при каждом запросе
+  name: 'user_sid',
+  secret: process.env.SESSION_SECRET ?? 'test',
+  resave: true,
   store: new FileStore(),
-  saveUninitialized: false, 		// Создавать ли сессию без инициализации ключей в req.session
+  saveUninitialized: false,
   cookie: {
-    maxAge: 1000 * 60 * 60 * 12, // Срок истечения годности куки в миллисекундах
-    httpOnly: true, 				// Серверная установка и удаление куки, по умолчанию true
+    maxAge: 1000 * 60 * 60 * 12,
+    httpOnly: true,
   },
 };
 

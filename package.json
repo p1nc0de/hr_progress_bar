@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack": "webpack -wd eval-source-map",
-    "dev": "babel-node src/server.js"
+    "dev": "babel-node src/server.js",
+    "build": "webpack && babel src --copy-files --out-dir distr",
+    "start": "node distr/server.js"
   },
   "repository": {
     "type": "git",
@@ -39,7 +41,6 @@
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.2",
-    "env": "^0.0.2",
     "express": "^4.18.1",
     "express-session": "^1.17.3",
     "pg": "^8.8.0",
