@@ -16,6 +16,9 @@ module.exports = {
       passwd: {
         type: Sequelize.TEXT,
       },
+      email: {
+        type: Sequelize.TEXT,
+      },
       admin: {
         type: Sequelize.BOOLEAN,
       },
