@@ -15,11 +15,18 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/templates', async (req, res) => {
-  const checklists = await CheckList.findAll();
-  console.log(checklists);
-  console.log('TYPE!!');
-  console.log(typeof (checklists));
-  const initState = { path: req.originalUrl, checklists };
+  const lists = await CheckList.findAll({ order: [['id', 'DESC']] });
+  const initState = { path: req.originalUrl, lists };
+  const layoutComponent = React.createElement(Layout, { initState });
+  const html = renderToString(layoutComponent);
+  res.write('<!DOCTYPE html>');
+  res.end(html);
+});
+
+router.get('/templates/:id', async (req, res) => {
+  const { id } = req.params;
+  const myLists = await CheckList.findAll({ where: { author_id: id } });
+  const initState = { path: req.originalUrl, myLists };
   const layoutComponent = React.createElement(Layout, { initState });
   const html = renderToString(layoutComponent);
   res.write('<!DOCTYPE html>');
