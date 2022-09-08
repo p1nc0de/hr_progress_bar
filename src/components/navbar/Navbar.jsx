@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function Navbar() {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a className="nav-link" href="/">Все листки адаптации</a>
+              <Link className="nav-link" to="/api/">Все листки адаптации</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/">Мои листки адаптации</a>
