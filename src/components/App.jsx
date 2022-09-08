@@ -12,7 +12,7 @@ function App({ checklists }) {
       <Navbar />
       <Home />
       <Routes>
-        <Route path="/templates" element={<Checklist checklists={checklists} />} />
+        <Route path="/templates" element={<Templates checklists={checklists} />} />
         {/* <Route path="/templates/:userId" element={<MyTemplates />} />
         <Route path="/templates/" element={<MyTemplates />} /> */}
       </Routes>
