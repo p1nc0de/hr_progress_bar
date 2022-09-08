@@ -13,6 +13,8 @@ module.exports = {
       q10: false,
       q11: false,
       q12: false,
+      userName: 'Владислав Серов',
+      menthorName: 'Рита А.',
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});

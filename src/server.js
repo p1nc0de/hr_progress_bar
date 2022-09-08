@@ -9,7 +9,8 @@ import userApiRouter from './routes/userApiRouter';
 
 require('dotenv').config();
 
-const PORT = process.env.DB_HOST || 3000;
+// const PORT = process.env.DB_HOST || 3000;
+const PORT = 3000;
 const app = express();
 const FileStore = store(session);
 
