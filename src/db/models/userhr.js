@@ -9,12 +9,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      this.hasMany(models.CheckList, { foreignKey: 'author_id' });
     }
   }
   UserHr.init({
     firstName: DataTypes.STRING,
     lastName: DataTypes.STRING,
     passwd: DataTypes.TEXT,
+    email: DataTypes.TEXT,
     admin: DataTypes.BOOLEAN,
     createdAt: DataTypes.DATE,
     updatedAt: DataTypes.DATE,
