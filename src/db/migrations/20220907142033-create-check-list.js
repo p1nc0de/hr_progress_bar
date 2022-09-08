@@ -43,10 +43,7 @@ module.exports = {
       q12: {
         type: Sequelize.BOOLEAN,
       },
-      firstName: {
-        type: Sequelize.STRING,
-      },
-      lastName: {
+      userName: {
         type: Sequelize.STRING,
       },
       menthorName: {
