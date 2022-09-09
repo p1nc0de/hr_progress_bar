@@ -64,7 +64,6 @@ router.get('/employees/:id', async (req, res) => {
 
 router.get('/:uniqueUrl', async (req, res) => {
   const { uniqueUrl } = req.params;
-  console.log(req.params);
   const list = await CheckList.findOne({ where: { uniqueUrl } });
   const initState = { path: req.originalUrl, list, userName: req.session.userSession.email, admin:req.session.userSession.isAdmin  };
   const layoutComponent = React.createElement(Layout, { initState });
