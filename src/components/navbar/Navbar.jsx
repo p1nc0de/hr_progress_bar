@@ -32,7 +32,7 @@ export default function Navbar({
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link onClick={clickHandlerMy} className="navbar-brand" to="/templates">
+        <Link className="navbar-brand" to="/templates">
           <img src="/logo.png" alt="" width="30" height="26" style={{ 'margin-right': '10px' }} className="d-inline-block align-text-top" />
           Высокая гора
         </Link>
