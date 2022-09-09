@@ -26,6 +26,7 @@ export default function TemplateCard({ template }) {
           <h5 className="card-title">Лист адаптации</h5>
           <p className="card-text">{`Сотрудник: ${template.userName}`}</p>
           <p className="card-text">{`Наставник: ${template.menthorName}`}</p>
+          <p className="card-text">{`UniqueUrl: ${(template.uniqueUrl)}`}</p>
           <p className="card-text">{`Прогресс: ${progressCounter(template)} %`}</p>
           {/* <a type="button" onClick={clickHandler} className="btn btn-primary">Посмотреть лист</button> */}
           <div className="progress">

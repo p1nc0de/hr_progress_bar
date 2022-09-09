@@ -8,10 +8,10 @@ router.get('/', async (req, res) => {
   res.json(lists);
 });
 
-router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const myLists = await CheckList.findAll({ where: { email: id } });
-  res.json(myLists);
-});
+// router.get('/:id', async (req, res) => {
+//   const { id } = req.params;
+//   const myLists = await CheckList.findAll({ where: { email: id } });
+//   res.json(myLists);
+// });
 
 export default router;
