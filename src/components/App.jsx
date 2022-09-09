@@ -17,7 +17,6 @@ function App({
   const [user, setUser] = useState(userName || null);
   const [newEmp, setNewEmp] = useState(newEmployee);
   const [isAdmin, setIsAdmin] = useState(false);
-console.log('user', user);
   // const [authState, setAuthState] = useState(userSesion || null)
   return (
     <>
@@ -34,7 +33,7 @@ console.log('user', user);
         <Route path="/templates/:id" element={<MyTemplates myChecklists={myChecklists} setMyChecklists={setMyChecklists} />} />
         <Route path="employees/new" element={<AddNewEmployee setNewEmp={setNewEmp} newEmp={newEmp} />} />
         <Route path="employees/:id" element={<NewEmployee newEmp={newEmp} />} />
-        {/* <Route path="/checklists/:id" element={<ChecklistPreview list={list} />} /> */}
+        <Route path="/checklists/:id" element={<Checklist list={list} />} />
         <Route path="/:url" element={<Checklist list={externalList} />} />
       </Routes>
     </>
