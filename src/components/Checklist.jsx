@@ -4,8 +4,7 @@ import { useParams } from 'react-router-dom';
 //
 function Checklist({ list }) {
   const { uniqueUrl } = useParams();
-  console.log(uniqueUrl);
-  const [inputs, setInputs] = useState({ q1: false });
+  const [inputs, setInputs] = useState({});
   const changeHandler = async (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
   };

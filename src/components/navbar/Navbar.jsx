@@ -23,12 +23,12 @@ export default function Navbar({
   const id = 1; // ЗДЕСЬ ДОЛЖНО БЫТЬ ID ЧЕЛОВЕКА ИЗ СЕССИИИИИИИИ!!!!!!!!!!!!!!!!!!!!!!!!!
   const clickHandlerMy = async (e) => {
     e.preventDefault();
-    fetch(`/api/v1/templates/${id}`)
+    fetch('/api/v1/templates')
       .then((res) => res.json())
       .then((data) => setMyChecklists(data))
       .then(() => navigate('/templates'));
   };
-  console.log(user);
+
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
