@@ -1,25 +1,25 @@
 import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import Layout from '../components/Layout';
+// import React from 'react';
+// import { renderToString } from 'react-dom/server';
+// import Layout from '../components/Layout';
 import { UserHr, CheckList } from '../db/models';
 
 const router = express.Router();
 
-router.get('/checklists', async (req, res) => {
-  const initState = { path: req.originalUrl };
-  const layoutComponent = React.createElement(Layout, { initState });
-  const html = renderToString(layoutComponent);
-  res.write('<!DOCTYPE html>');
-  res.end(html);
-});
-router.post('/checklist', async (req, res) => {
-  const initState = { path: req.originalUrl };
-  const layoutComponent = React.createElement(Layout, { initState });
-  const html = renderToString(layoutComponent);
-  res.write('<!DOCTYPE html>');
-  res.end(html);
-});
+// router.get('/checklists', async (req, res) => {
+//   const initState = { path: req.originalUrl };
+//   const layoutComponent = React.createElement(Layout, { initState });
+//   const html = renderToString(layoutComponent);
+//   res.write('<!DOCTYPE html>');
+//   res.end(html);
+// });
+// router.post('/checklist', async (req, res) => {
+//   const initState = { path: req.originalUrl };
+//   const layoutComponent = React.createElement(Layout, { initState });
+//   const html = renderToString(layoutComponent);
+//   res.write('<!DOCTYPE html>');
+//   res.end(html);
+// });
 
 router.delete('/:id', async (req, res) => {
   const { id } = req.params;
@@ -34,17 +34,11 @@ router.get('/checklists/:id', async (req, res) => {
   res.json(list);
 });
 
-router.post('/checklist/:uniqueUrl', async (req, res) => {
+router.post('/:uniqueUrl', async (req, res) => {
   const { uniqueUrl } = req.params;
   console.log(req.body);
-  const changedQ = await CheckList.update({ ...req.body }, { where: { id: uniqueUrl } });
+  const changedQ = await CheckList.update({ ...req.body }, { where: { uniqueUrl } });
   res.sendStatus(200);
-});
-
-router.get('/checklist/:id', async (req, res) => {
-  const { id } = req.params;
-  const newChecklistState = await CheckList.findByPk(id);
-  res.json(newChecklistState);
 });
 
 export default router;
