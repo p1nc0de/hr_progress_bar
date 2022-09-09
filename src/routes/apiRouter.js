@@ -36,7 +36,6 @@ router.get('/checklists/:id', async (req, res) => {
 
 router.post('/:uniqueUrl', async (req, res) => {
   const { uniqueUrl } = req.params;
-  console.log(req.body);
   const changedQ = await CheckList.update({ ...req.body }, { where: { uniqueUrl } });
   res.sendStatus(200);
 });
