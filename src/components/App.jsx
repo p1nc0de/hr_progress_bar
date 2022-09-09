@@ -6,20 +6,36 @@ import Navbar from './navbar/Navbar';
 import Templates from './Templates';
 import MyTemplates from './MyTemplates';
 import AddNewEmployee from './AddNewEmployee';
+import NewEmployee from './NewEmployee';
 
-function App({ lists, myLists, list, userEmail }) {
+function App({
+  lists, myLists, list, userEmail, userName, newEmployee, entryError, externalList,
+
+}) {
   const [checklists, setChecklists] = useState(lists);
   const [myChecklists, setMyChecklists] = useState(myLists);
-  const [user, setUser] = useState(userEmail || null);
+  const [user, setUser] = useState(userName || null);
+  const [newEmp, setNewEmp] = useState(newEmployee);
+  const [isAdmin, setIsAdmin] = useState(false);
+console.log('user', user);
+  // const [authState, setAuthState] = useState(userSesion || null)
   return (
     <>
-      <Navbar setChecklists={setChecklists} setMyChecklists={setMyChecklists} />
+      <Navbar
+        setChecklists={setChecklists}
+        setMyChecklists={setMyChecklists}
+        user={user}
+        setUser={setUser}
+        isAdmin={isAdmin}
+      />
       <Routes>
-        <Route path="/" element={<Home checklists={checklists} setUser={setUser} />} />
+        <Route path="/" element={<Home checklists={checklists} setUser={setUser} entryError={entryError} setIsAdmin={setIsAdmin}/>} />
         <Route path="/templates" element={<Templates checklists={checklists} setChecklists={setChecklists} />} />
         <Route path="/templates/:id" element={<MyTemplates myChecklists={myChecklists} setMyChecklists={setMyChecklists} />} />
-        <Route path="/add" element={<AddNewEmployee setChecklists={setChecklists} setMyChecklists={setMyChecklists} />} />
-        <Route path="/checklists/:id" element={<Checklist list={list} />} />
+        <Route path="employees/new" element={<AddNewEmployee setNewEmp={setNewEmp} newEmp={newEmp} />} />
+        <Route path="employees/:id" element={<NewEmployee newEmp={newEmp} />} />
+        {/* <Route path="/checklists/:id" element={<ChecklistPreview list={list} />} /> */}
+        <Route path="/:url" element={<Checklist list={externalList} />} />
       </Routes>
     </>
   );
