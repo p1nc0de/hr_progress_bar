@@ -48,7 +48,7 @@ export default function Navbar({ setChecklists, setMyChecklists, userEmail }) {
               <Link className="nav-link" to="/">Пользователи</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/">Добавить листки адаптации</Link>
+              <Link className="nav-link" to="/employees/new">Добавить листки адаптации</Link>
             </li>
             <button type="button" className="btn btn-secondary" onClick={logoutHandler}>Logout</button>
           </ul>
