@@ -38,6 +38,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
+    "@babel/cli": "^7.18.10",
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.2",
