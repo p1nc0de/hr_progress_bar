@@ -39,22 +39,22 @@ function Checklist({ list }) {
         <div className="d-grid gap-4 p-3">
           <div>
             Привет,
-            <p className="text-start text-success">
+            <p className="text-start text-success" style={{ marginBottom: '4px' }}>
               {' '}
               {list?.userName}
             </p>
-            <p className="text-start">
+            <p className="text-start" style={{ marginBottom: '4px' }}>
               И добро пожаловать в команду
               {' '}
-              <p className="text-success">Высокогорья!</p>
+              <p className="text-success" style={{ marginBottom: '4px' }}>Высокогорья!</p>
             </p>
-            <p className="text-start">
+            <p className="text-start" style={{ marginBottom: '5px' }}>
               Впереди нас ждет интересное путешествие в мир нашей компании,
               и самым главным проводником будет -
               {' '}
-              <p className="text-success">{list?.menthorName}</p>
+              <p className="text-success" style={{ marginBottom: '4px' }}>{list?.menthorName}</p>
             </p>
-            <p className="fw-lighter">
+            <p className="fw-lighter" style={{ marginBottom: '6px' }}>
               Мы подготовили для тебя чек-лист на первый день.
               Процесс выполнения будет сохраняться, поэтому ты можешь
               закрывать пункты в удобном для тебя порядке.
@@ -164,13 +164,15 @@ function Checklist({ list }) {
               </label>
             </div>
           </div>
-          <p>
-            Классного путешествия!
-          </p>
-          <p>
-            Команда
-            {' '}
-            <p className="text-success">Высокой горы 💚</p>
+          <p className="text-end">
+            <p style={{ marginBottom: '1px' }}>
+              Классного путешествия!
+            </p>
+            <p style={{ marginBottom: '1px' }}>
+              Команда
+              {' '}
+              <p className="text-success">Высокой горы 💚</p>
+            </p>
           </p>
         </div>
       </form>
