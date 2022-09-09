@@ -26,7 +26,7 @@ export default function Navbar({
     fetch(`/api/v1/templates/${id}`)
       .then((res) => res.json())
       .then((data) => setMyChecklists(data))
-      .then(() => navigate(`/templates/${id}`));
+      .then(() => navigate('/templates'));
   };
   console.log(user);
   return (

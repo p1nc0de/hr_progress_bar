@@ -27,24 +27,4 @@ router.delete('/:id', async (req, res) => {
   res.sendStatus(200);
 });
 
-// для вывода сообщения после создания листка адаптации
-router.get('/checklists/:id', async (req, res) => {
-  const { id } = req.params;
-  const list = await CheckList.findByPk(id);
-  res.json(list);
-});
-
-router.post('/checklist/:uniqueUrl', async (req, res) => {
-  const { uniqueUrl } = req.params;
-  console.log(req.body);
-  const changedQ = await CheckList.update({ ...req.body }, { where: { id: uniqueUrl } });
-  res.sendStatus(200);
-});
-
-router.get('/checklist/:id', async (req, res) => {
-  const { id } = req.params;
-  const newChecklistState = await CheckList.findByPk(id);
-  res.json(newChecklistState);
-});
-
 export default router;

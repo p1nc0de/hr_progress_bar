@@ -1,7 +1,7 @@
 import React from 'react';
 import TemplateCard from './TemplateCard';
 
-export default function Templates({ myChecklists }) {
+export default function MyTemplates({ myChecklists }) {
   return (
     <div className="container">
       <div className="row">
