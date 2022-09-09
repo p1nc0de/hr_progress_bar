@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
-  const myLists = await CheckList.findAll({ where: { author_id: id } });
+  const myLists = await CheckList.findAll({ where: { email: id } });
   res.json(myLists);
 });
 

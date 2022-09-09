@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate, Link, useParams } from 'react-router-dom';
 
 export default function Navbar({
-  setChecklists, setMyChecklists, user, setUser, isAdmin,
+  setChecklists, setMyChecklists, user, setUser, isAdmin, userId,
 }) {
   const navigate = useNavigate();
   const logoutHandler = async (e) => {
@@ -22,10 +22,9 @@ export default function Navbar({
   };
   const clickHandlerMy = async (e) => {
     e.preventDefault();
-    fetch('/api/v1/templates')
+    fetch(`/api/v1/templates/${user}`)
       .then((res) => res.json())
-      .then((data) => setMyChecklists(data))
-      .then(() => navigate(`/templates/${user.id}`));
+      .then((data) => setMyChecklists(data));
   };
 
   const clickHandler = async (e) => {
@@ -35,7 +34,6 @@ export default function Navbar({
       .then((data) => setMyChecklists(data))
       .then(() => navigate('/templates'));
   };
-
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
