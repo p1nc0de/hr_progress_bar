@@ -28,11 +28,11 @@ export default function Navbar({
       .then((data) => setMyChecklists(data))
       .then(() => navigate('/templates'));
   };
-  console.log(user);
+//   console.log(user);
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/templates">
+        <Link onClick={clickHandlerMy} className="navbar-brand" to="/templates">
           <img src="/logo.png" alt="" width="30" height="26" style={{ 'margin-right': '10px' }} className="d-inline-block align-text-top" />
           Высокая гора
         </Link>

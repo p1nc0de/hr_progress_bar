@@ -9,14 +9,14 @@ import AddNewEmployee from './AddNewEmployee';
 import NewEmployee from './NewEmployee';
 
 function App({
-  lists, myLists, list, userEmail, userName, newEmployee, entryError, externalList,
+  lists, myLists, list, userEmail, userName, newEmployee, entryError, externalList, admin
 
 }) {
   const [checklists, setChecklists] = useState(lists);
   const [myChecklists, setMyChecklists] = useState(myLists);
   const [user, setUser] = useState(userName || null);
   const [newEmp, setNewEmp] = useState(newEmployee);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(admin || false);
   // const [authState, setAuthState] = useState(userSesion || null)
   return (
     <>
