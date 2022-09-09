@@ -28,7 +28,7 @@ export default function Home({ setUser, entryError, setIsAdmin }) {
   };
   return (
     <div className="text-center">
-      <div className="card" style={{ width: '50rem', 'margin-left': '100px', padding: '60px' }}>
+      <div className="card" style={{ width: '50rem', marginLeft: '100px', padding: '60px' }}>
         <div className="card-body">
           <h5 className="card-title">Привет! Это корпоративный портал ООО “Высокая Гора”.</h5>
           <p className="card-text">Чтобы получить доступ к сайту - обратись в департамент HR.</p>

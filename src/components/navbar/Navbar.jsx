@@ -38,7 +38,7 @@ export default function Navbar({
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
         <Link onClick={clickHandler} className="navbar-brand" to="/templates">
-          <img src="/logo.png" alt="" width="30" height="26" style={{ 'margin-right': '10px' }} className="d-inline-block align-text-top" />
+          <img src="/logo.png" alt="" width="30" height="26" style={{ marginRight: '10px' }} className="d-inline-block align-text-top" />
           Высокая гора
         </Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
