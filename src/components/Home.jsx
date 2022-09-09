@@ -3,11 +3,11 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Home({ setUser, entryError, setIsAdmin }) {
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
   const [input, setInput] = useState({ email: '', password: '' });
-//   const [isAdmin, setIsAdmin] = useState(false);
+  //   const [isAdmin, setIsAdmin] = useState(false);
   const changeHandler = (e) => setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   const submitHandler = async (e) => {
-    // console.log(input);
     e.preventDefault();
     const response = await fetch('/api/v1/users/login', {
       method: 'POST',
@@ -18,11 +18,12 @@ export default function Home({ setUser, entryError, setIsAdmin }) {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log('data --->', data);
       setUser(data.email);
       setInput({ email: '', password: '' });
       setIsAdmin(data.isAdmin);
       navigate('/templates');
+    } else {
+      setError('Вы ввели неверный email или password');
     }
   };
   return (
@@ -45,6 +46,7 @@ export default function Home({ setUser, entryError, setIsAdmin }) {
               </label>
             </div>
             <button type="submit" className="btn btn-success">LogIn</button>
+            {error && <div style={{ color: 'darkred' }}>Вы ввели неверный email или password</div>}
           </form>
         </div>
       </div>

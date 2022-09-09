@@ -28,13 +28,14 @@ function App({
         isAdmin={isAdmin}
       />
       <Routes>
-        <Route path="/" element={<Home checklists={checklists} setUser={setUser} entryError={entryError} setIsAdmin={setIsAdmin}/>} />
+        <Route path="/" element={<Home checklists={checklists} setUser={setUser} entryError={entryError} setIsAdmin={setIsAdmin} />} />
         <Route path="/templates" element={<Templates checklists={checklists} setChecklists={setChecklists} />} />
         <Route path="/templates/:id" element={<MyTemplates myChecklists={myChecklists} setMyChecklists={setMyChecklists} />} />
         <Route path="employees/new" element={<AddNewEmployee setNewEmp={setNewEmp} newEmp={newEmp} />} />
         <Route path="employees/:id" element={<NewEmployee newEmp={newEmp} />} />
         <Route path="/checklists/:id" element={<Checklist list={list} />} />
-        <Route path="/:url" element={<Checklist list={externalList} />} />
+
+        <Route path="/:uniqueUrl" element={<Checklist list={list} />} />
       </Routes>
     </>
   );

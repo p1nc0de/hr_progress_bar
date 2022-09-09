@@ -62,10 +62,11 @@ router.get('/employees/:id', async (req, res) => {
   res.end(html);
 });
 
-router.get('/:url', async (req, res) => {
-  const { url } = req.params;
-  const externalList = await CheckList.findOne({ where: { uniqueUrl: url } });
-  const initState = { path: req.originalUrl, externalList };
+router.get('/:uniqueUrl', async (req, res) => {
+  const { uniqueUrl } = req.params;
+  console.log(req.params);
+  const list = await CheckList.findOne({ where: { uniqueUrl } });
+  const initState = { path: req.originalUrl, list };
   const layoutComponent = React.createElement(Layout, { initState });
   const html = renderToString(layoutComponent);
   res.write('<!DOCTYPE html>');
