@@ -20,7 +20,7 @@ export default function Home({ setUser }) {
       console.log(data);
       setUser(data.email);
       setInput({ email: '', password: '' });
-      navigate('/api/v1/templates');
+      navigate('/templates');
     }
   };
   return (

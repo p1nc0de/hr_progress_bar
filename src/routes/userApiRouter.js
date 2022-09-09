@@ -12,6 +12,7 @@ router.post('/login', async (req, res) => {
     req.session.userEmail = currUser.email;
     req.session.userFirstName = currUser.firstName;
     req.session.userLastName = currUser.lastName;
+    req.session.userSession = { email: currUser.email };
     res.json({ name: currUser.email });
   } else {
     res.sendStatus(401);
