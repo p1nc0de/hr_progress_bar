@@ -34,18 +34,17 @@ router.get('/templates/:id', async (req, res) => {
   res.end(html);
 });
 
-router.get('/checklists/:id', async (req, res) => {
-  const { id } = req.params;
-  const list = await CheckList.findByPk(id);
-  console.log(list.userName);
-  const initState = { path: req.originalUrl, list };
-  // const initState = { path: req.originalUrl };
-
-  const layoutComponent = React.createElement(Layout, { initState });
-  const html = renderToString(layoutComponent);
-  res.write('<!DOCTYPE html>');
-  res.end(html);
-});
+// router.get('/checklists/:id', async (req, res) => {
+//   const { id } = req.params;
+//   const list = await CheckList.findByPk(id);
+//   console.log(list.userName);
+//   const initState = { path: req.originalUrl, list };
+//   // const initState = { path: req.originalUrl };
+//   const layoutComponent = React.createElement(Layout, { initState });
+//   const html = renderToString(layoutComponent);
+//   res.write('<!DOCTYPE html>');
+//   res.end(html);
+// });
 
 router.get('/employees/new', async (req, res) => {
   const initState = { path: req.originalUrl };
@@ -65,11 +64,10 @@ router.get('/employees/:id', async (req, res) => {
   res.end(html);
 });
 
-router.get('/lists/:url', async (req, res) => {
+router.get('/:url', async (req, res) => {
   const { url } = req.params;
-  const list = await CheckList.findOne({ where: { uniqueUrl: url } });
-  const initState = { path: req.originalUrl, list };
-  // const initState = { path: req.originalUrl };
+  const externalList = await CheckList.findOne({ where: { uniqueUrl: url } });
+  const initState = { path: req.originalUrl, externalList };
   const layoutComponent = React.createElement(Layout, { initState });
   const html = renderToString(layoutComponent);
   res.write('<!DOCTYPE html>');
@@ -98,5 +96,14 @@ router.post('/employees/new', async (req, res) => {
     res.sendStatus(404);
   }
 });
+
+// router.get('/*', async (req, res) => {
+//   const entryError = 'Что-то пошло не так и ты зашел по неправильной ссылке. Чтобы получить доступ к сайту - обратись в департамент HR.';
+//   const initState = { path: req.originalUrl, entryError };
+//   const layoutComponent = React.createElement(Layout, { initState });
+//   const html = renderToString(layoutComponent);
+//   res.write('<!DOCTYPE html>');
+//   res.end(html);
+// });
 
 export default router;

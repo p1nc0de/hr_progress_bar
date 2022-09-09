@@ -22,14 +22,16 @@ export default function AddNewEmployee({ setNewEmp }) {
       setNotNew(false);
       setInputs({ userName: '', menthorName: '' });
       setNewEmp(data);
-      navigate(`/employees/${data.id}`);
+      console.log(data);
+      // navigate(`/employees/${newEmp.id}`);
+      window.location = `/employees/${data.id}`;
     } else if (response.status === 406) {
       setNotNew(true);
       setInputs({ userName: '', menthorName: '' });
     }
   };
   return (
-    <>
+    <div className="text-center">
       <h1>Создание листка адаптации</h1>
       <form onSubmit={submitHandler}>
         <div className="mb-3">
@@ -37,7 +39,7 @@ export default function AddNewEmployee({ setNewEmp }) {
             Имя нового сотрудника
             <input type="text" name="userName" value={inputs.userName} onChange={inputHandler} className="form-control" id="exampleInputEmail1" />
           </label>
-          {notNew && <div id="emailHelp" className="form-text">Для такого сотрудника уже существует лист адаптации или какое-то из полей осталось пустым</div>}
+          {notNew === true && <div id="emailHelp" className="form-text">Для такого сотрудника уже существует лист адаптации или какое-то из полей осталось пустым</div>}
         </div>
         <div className="mb-3">
           <label htmlFor="exampleInputPassword1" className="form-label">
@@ -47,6 +49,6 @@ export default function AddNewEmployee({ setNewEmp }) {
         </div>
         <button type="submit" className="btn btn-primary">Создать</button>
       </form>
-    </>
+    </div>
   );
 }
