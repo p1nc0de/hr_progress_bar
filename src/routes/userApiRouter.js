@@ -7,7 +7,6 @@ router.post('/login', async (req, res) => {
   // console.log(req.body);
   const { email, password } = req.body;
   const currUser = await UserHr.findOne({ where: { email } });
-  console.log(currUser.admin);
   if (password === currUser.passwd) {
     req.session.userId = currUser.id;
     req.session.userEmail = currUser.email;
