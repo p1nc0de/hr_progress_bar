@@ -13,7 +13,7 @@ router.post('/login', async (req, res) => {
     req.session.userFirstName = currUser.firstName;
     req.session.userLastName = currUser.lastName;
     req.session.userSession = { email: currUser.email, isAdmin: currUser.admin };
-    res.json({ email: currUser.email, isAdmin: currUser.admin });
+    res.json({ email: currUser.email, isAdmin: currUser.admin, userId: currUser.id });
   } else {
     res.sendStatus(401);
   }
