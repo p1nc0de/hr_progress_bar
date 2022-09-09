@@ -50,7 +50,7 @@ export default function Navbar({
               <Link className="nav-link" to="/checklists/:id">Пользователи</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/add">Добавить листки адаптации</Link>
+              <Link className="nav-link" to="/employees/new">Добавить листки адаптации</Link>
             </li>
             <button type="button" className="btn btn-secondary" onClick={logoutHandler}>Logout</button>
           </ul>
