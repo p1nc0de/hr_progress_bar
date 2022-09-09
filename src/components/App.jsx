@@ -34,6 +34,7 @@ function App({
         <Route path="employees/new" element={<AddNewEmployee setNewEmp={setNewEmp} newEmp={newEmp} />} />
         <Route path="employees/:id" element={<NewEmployee newEmp={newEmp} />} />
         <Route path="/checklists/:id" element={<Checklist list={list} />} />
+
         <Route path="/:uniqueUrl" element={<Checklist list={list} />} />
       </Routes>
     </>
