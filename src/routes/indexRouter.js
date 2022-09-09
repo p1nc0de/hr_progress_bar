@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 router.get('/templates', async (req, res) => {
   const lists = await CheckList.findAll({ order: [['id', 'DESC']] });
   const initState = {
-    path: req.originalUrl, lists, userName: req.session.userSession.email, admin: req.session.userSession.isAdmin,
+    path: req.originalUrl, lists, userName: req.session.userSession?.email, admin: req.session.userSession?.isAdmin,
   };
   const layoutComponent = React.createElement(Layout, { initState });
   const html = renderToString(layoutComponent);
@@ -42,7 +42,7 @@ router.get('/checklists/:id', async (req, res) => {
   const { id } = req.params;
   const list = await CheckList.findByPk(id);
   const initState = {
-    path: req.originalUrl, list, userName: req.session.userSession.email, admin: req.session.userSession.isAdmin,
+    path: req.originalUrl, list, userName: req.session.userSession?.email, admin: req.session.userSession?.isAdmin,
   };
   const layoutComponent = React.createElement(Layout, { initState });
   const html = renderToString(layoutComponent);
@@ -51,7 +51,7 @@ router.get('/checklists/:id', async (req, res) => {
 });
 
 router.get('/employees/new', async (req, res) => {
-  const initState = { path: req.originalUrl, userName: req.session.userSession.email, admin: req.session.userSession.isAdmin };
+  const initState = { path: req.originalUrl, userName: req.session.userSession?.email, admin: req.session.userSession?.isAdmin };
   const layoutComponent = React.createElement(Layout, { initState });
   const html = renderToString(layoutComponent);
   res.write('<!DOCTYPE html>');
@@ -62,7 +62,7 @@ router.get('/employees/:id', async (req, res) => {
   const { id } = req.params;
   const newEmployee = await CheckList.findByPk(id);
   const initState = {
-    path: req.originalUrl, newEmployee, userName: req.session.userSession.email, admin: req.session.userSession.isAdmin,
+    path: req.originalUrl, newEmployee, userName: req.session.userSession?.email, admin: req.session.userSession?.isAdmin,
   };
   const layoutComponent = React.createElement(Layout, { initState });
   const html = renderToString(layoutComponent);
@@ -74,7 +74,7 @@ router.get('/:uniqueUrl', async (req, res) => {
   const { uniqueUrl } = req.params;
   const list = await CheckList.findOne({ where: { uniqueUrl } });
   const initState = {
-    path: req.originalUrl, list, userName: req.session.userSession.email, admin: req.session.userSession.isAdmin,
+    path: req.originalUrl, list, userName: req.session.userSession?.email, admin: req.session.userSession?.isAdmin,
   };
   const layoutComponent = React.createElement(Layout, { initState });
   const html = renderToString(layoutComponent);
