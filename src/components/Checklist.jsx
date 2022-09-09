@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 
 //
 function Checklist({ list }) {
-  const { id } = useParams();
+  const { uniqueUrl } = useParams();
+  console.log(uniqueUrl);
   const [inputs, setInputs] = useState({ q1: false });
   const changeHandler = async (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
@@ -15,7 +16,7 @@ function Checklist({ list }) {
 
   useEffect(() => {
     (async () => {
-      const resp = await fetch(`/api/v1/checklist/${id}`);
+      const resp = await fetch(`/api/v1/${uniqueUrl}`);
       const result = await resp.json();
       setInputs(result);
     })();
@@ -23,7 +24,7 @@ function Checklist({ list }) {
 
   useEffect(() => {
     (async () => {
-      const response = await fetch(`/api/v1/checklist/${id}`, {
+      const response = await fetch(`/api/v1/${uniqueUrl}`, {
         method: 'POST',
         headers: {
           'Content-type': 'application/json',
