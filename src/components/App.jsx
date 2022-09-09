@@ -33,7 +33,7 @@ function App({
         <Route path="/templates/:id" element={<MyTemplates myChecklists={myChecklists} setMyChecklists={setMyChecklists} />} />
         <Route path="employees/new" element={<AddNewEmployee setNewEmp={setNewEmp} newEmp={newEmp} />} />
         <Route path="employees/:id" element={<NewEmployee newEmp={newEmp} />} />
-        <Route path="/checklists/:id" element={<Checklist list={list} />} />
+        <Route path="/checklists/:id" element={<ChecklistPreview list={list} />} />
 
         <Route path="/:uniqueUrl" element={<Checklist list={list} />} />
       </Routes>

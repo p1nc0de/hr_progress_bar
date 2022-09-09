@@ -20,7 +20,7 @@ export default function TemplateCard({ template }) {
     success = (progress - 25) < 0 ? progress : 25;
   }
   return (
-    <div className="col-4">
+    <div className="col-4" style={{ marginBottom: '20px' }}>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">Лист адаптации</h5>
@@ -28,14 +28,10 @@ export default function TemplateCard({ template }) {
           <p className="card-text">{`Наставник: ${template.menthorName}`}</p>
           <p className="card-text">{`Прогресс: ${progressCounter(template)} %`}</p>
           {/* <button type="button" onClick={clickHandler} className="btn btn-primary">Посмотреть лист</button> */}
-          {/* <div className="progress">
-            <div className="progress-bar progress-bar-striped bg-success" role="progressbar" aria-label="Success striped example" style={{ width: `${progressCounter(template)}%` }} aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" />
-          </div> */}
-
           <div className="progress">
             <div className="progress-bar bg-danger" role="progressbar" aria-label="Segment one" style={{ width: `${danger}%` }} aria-valuemin="0" aria-valuemax="100" />
-            <div className="progress-bar bg-warning" role="progressbar" aria-label="Segment two" style={{ width: `${warning}%` }}  aria-valuemin="0" aria-valuemax="100" />
-            <div className="progress-bar bg-success" role="progressbar" aria-label="Segment three" style={{ width: `${success}%` }}  aria-valuemin="0" aria-valuemax="100" />
+            <div className="progress-bar bg-warning" role="progressbar" aria-label="Segment two" style={{ width: `${warning}%` }} aria-valuemin="0" aria-valuemax="100" />
+            <div className="progress-bar bg-success" role="progressbar" aria-label="Segment three" style={{ width: `${success}%` }} aria-valuemin="0" aria-valuemax="100" />
           </div>
 
         </div>
