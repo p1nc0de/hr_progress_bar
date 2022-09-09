@@ -20,12 +20,12 @@ export default function Navbar({
       .then((data) => setChecklists(data))
       .then(() => navigate('/templates'));
   };
-  const clickHandlerMy = async (e) => {
-    e.preventDefault();
-    fetch(`/api/v1/templates/${user}`)
-      .then((res) => res.json())
-      .then((data) => setMyChecklists(data));
-  };
+  // const clickHandlerMy = async (e) => {
+  //   e.preventDefault();
+  //   fetch(`/api/v1/templates/${user}`)
+  //     .then((res) => res.json())
+  //     .then((data) => setMyChecklists(data));
+  // };
 
   const clickHandler = async (e) => {
     e.preventDefault();
@@ -53,7 +53,7 @@ export default function Navbar({
                 <Link onClick={clickHandlerAll} className="nav-link" to="/templates">Все листки адаптации</Link>
               </li>
               <li className="nav-item">
-                <Link onClick={clickHandlerMy} className="nav-link" to="/templates/:id">Мои листки адаптации</Link>
+                <Link onClick={clickHandlerAll} className="nav-link" to="/templates">Мои листки адаптации</Link>
               </li>
               {isAdmin && (
               <li className="nav-item">

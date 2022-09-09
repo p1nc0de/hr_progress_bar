@@ -10,7 +10,7 @@ import NewEmployee from './NewEmployee';
 import ChecklistPreview from './ChecklistPreview';
 
 function App({
-  lists, myLists, list, userEmail, userName, newEmployee, entryError, externalList, userId, admin
+  lists, myLists, list, userEmail, userName, newEmployee, entryError, externalList, userId, admin,
 }) {
   const [checklists, setChecklists] = useState(lists);
   const [myChecklists, setMyChecklists] = useState(myLists);
@@ -31,7 +31,7 @@ function App({
       <Routes>
         <Route path="/" element={<Home checklists={checklists} setUser={setUser} entryError={entryError} setIsAdmin={setIsAdmin} />} />
         <Route path="/templates" element={<Templates checklists={checklists} setChecklists={setChecklists} />} />
-        <Route path="/templates/:id" element={<MyTemplates myChecklists={myChecklists} setMyChecklists={setMyChecklists} />} />
+        <Route path="/templates" element={<MyTemplates myChecklists={myChecklists} setMyChecklists={setMyChecklists} />} />
         <Route path="employees/new" element={<AddNewEmployee setNewEmp={setNewEmp} newEmp={newEmp} />} />
         <Route path="employees/:id" element={<NewEmployee newEmp={newEmp} />} />
         <Route path="/checklists/:id" element={<ChecklistPreview list={list} />} />
