@@ -5,7 +5,7 @@ export default function Navbar({ setChecklists, setMyChecklists, userEmail }) {
   const navigate = useNavigate();
   const logoutHandler = async (e) => {
     e.preventDefault();
-    const response = await fetch('api/v1/users/logout');
+    const response = await fetch('/api/v1/users/logout');
     if (response.ok) {
     //   setUset(null); // добавить
       navigate('/');
