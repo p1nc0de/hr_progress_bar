@@ -9,17 +9,26 @@ import AddNewEmployee from './AddNewEmployee';
 import NewEmployee from './NewEmployee';
 
 function App({
-  lists, myLists, list, userEmail, newEmployee,
+  lists, myLists, list, userName, newEmployee,
 }) {
   const [checklists, setChecklists] = useState(lists);
   const [myChecklists, setMyChecklists] = useState(myLists);
-  const [user, setUser] = useState(userEmail || null);
+  const [user, setUser] = useState(userName || null);
   const [newEmp, setNewEmp] = useState(newEmployee);
+  const [isAdmin, setIsAdmin] = useState(false);
+console.log('user', user);
+  // const [authState, setAuthState] = useState(userSesion || null)
   return (
     <>
-      <Navbar setChecklists={setChecklists} setMyChecklists={setMyChecklists} />
+      <Navbar
+        setChecklists={setChecklists}
+        setMyChecklists={setMyChecklists}
+        user={user}
+        setUser={setUser}
+        isAdmin={isAdmin}
+      />
       <Routes>
-        <Route path="/" element={<Home checklists={checklists} setUser={setUser} />} />
+        <Route path="/" element={<Home checklists={checklists} setUser={setUser} setIsAdmin={setIsAdmin} />} />
         <Route path="/templates" element={<Templates checklists={checklists} setChecklists={setChecklists} />} />
         <Route path="/templates/:id" element={<MyTemplates myChecklists={myChecklists} setMyChecklists={setMyChecklists} />} />
         <Route path="employees/new" element={<AddNewEmployee setnewEmp={setNewEmp} />} />

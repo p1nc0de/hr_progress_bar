@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-export default function Home({ setUser }) {
+export default function Home({ setUser, setIsAdmin }) {
   const navigate = useNavigate();
   const [input, setInput] = useState({ email: '', password: '' });
+//   const [isAdmin, setIsAdmin] = useState(false);
   const changeHandler = (e) => setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   const submitHandler = async (e) => {
-    console.log(input);
+    // console.log(input);
     e.preventDefault();
     const response = await fetch('/api/v1/users/login', {
       method: 'POST',
@@ -17,10 +18,11 @@ export default function Home({ setUser }) {
     });
     if (response.ok) {
       const data = await response.json();
-      console.log(data);
+      console.log('data --->', data);
       setUser(data.email);
       setInput({ email: '', password: '' });
-      navigate('/api/v1/templates');
+      setIsAdmin(data.isAdmin);
+      navigate('/templates');
     }
   };
   return (
