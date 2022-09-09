@@ -55,6 +55,15 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: false,
       },
+      tim1: {
+        type: Sequelize.STRING,
+      },
+      tim2: {
+        type: Sequelize.STRING,
+      },
+      tim3: {
+        type: Sequelize.STRING,
+      },
       userName: {
         type: Sequelize.STRING,
       },

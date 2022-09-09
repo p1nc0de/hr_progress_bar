@@ -7,13 +7,15 @@ import progressCounter from '../utils/progressCounter';
 function Checklist({ list }) {
   const { uniqueUrl } = useParams();
   const [inputs, setInputs] = useState({});
+  const [inputs1, setInputs1] = useState({ name1: '', name2: '', name3: '' });
   const changeHandler = async (e) => {
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.checked }));
   };
-
+  const changeHandlerName = async (e) => {
+    setInputs1((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
   useEffect(() => {
-    console.log(inputs);
-  }, [inputs]);
+  }, [inputs1]);
 
   useEffect(() => {
     (async () => {
@@ -34,6 +36,18 @@ function Checklist({ list }) {
       });
     })();
   }, [inputs]);
+
+  const submitHandler = async (event) => {
+    event.preventDefault();
+    console.log('in sybmit');
+    const response = await fetch(`/api/v1/names/${uniqueUrl}`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(inputs1),
+    });
+  };
 
   let progress = progressCounter(list);
   const danger = (progress - 50) < 0 ? progress : 50;
@@ -57,7 +71,7 @@ function Checklist({ list }) {
         <div className="progress-bar bg-warning" role="progressbar" aria-label="Segment two" style={{ width: `${warning}%` }} aria-valuemin="0" aria-valuemax="100" />
         <div className="progress-bar bg-success" role="progressbar" aria-label="Segment three" style={{ width: `${success}%` }} aria-valuemin="0" aria-valuemax="100" />
       </div>
-      <form>
+      <form onSubmit={submitHandler}>
         <div className="d-grid gap-4 p-3">
           <div>
             Привет,
@@ -143,6 +157,19 @@ function Checklist({ list }) {
               <label className="form-check-label" htmlFor="flexCheckDefault">
                 <input name="q8" onChange={changeHandler} checked={inputs.q8} className="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                 Напиши имена трех твоих коллег по отделу:
+                <div className="col-sm-3">
+                  <input name="name1" onChange={changeHandlerName} value={inputs1.name1} className="form-control" id="specificSizeInputName" />
+                </div>
+
+                <div className="col-sm-3">
+                  <input name="name2" onChange={changeHandlerName} value={inputs1.name2} className="form-control" id="specificSizeInputName" />
+                </div>
+
+                <div className="col-sm-3">
+                  <input name="name3" onChange={changeHandlerName} value={inputs1.name3} className="form-control" id="specificSizeInputName" />
+                </div>
+                <button type="submit" className="btn btn-primary">Сохранить</button>
+
               </label>
             </div>
           </div>

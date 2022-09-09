@@ -46,4 +46,11 @@ router.get('/:uniqueUrl', async (req, res) => {
   res.json(updatedList);
 });
 
+router.post('/names/:uniqueUrl', async (req, res) => {
+  const { uniqueUrl } = req.params;
+  const { name1, name2, name3 } = req.body;
+  const changedQ = await CheckList.update({ tim1: name1, tim2: name2, tim3: name3 }, { where: { uniqueUrl } });
+  res.sendStatus(200);
+});
+
 export default router;

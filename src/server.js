@@ -39,6 +39,6 @@ app.use((req, res, next) => {
 app.use('/', indexRouter);
 app.use('/api/v1/templates', templateApiRouter);
 app.use('/api/v1/users', userApiRouter);
-app.use('/api/v1', apiRouter);
+app.use('/api/v1/', apiRouter);
 
 app.listen(PORT, () => console.log(`App has started on port ${PORT}`));
