@@ -7,6 +7,7 @@ import Templates from './Templates';
 import MyTemplates from './MyTemplates';
 import AddNewEmployee from './AddNewEmployee';
 import NewEmployee from './NewEmployee';
+import ChecklistPreview from './ChecklistPreview';
 
 function App({
   lists, myLists, list, userEmail, userName, newEmployee, entryError, externalList,

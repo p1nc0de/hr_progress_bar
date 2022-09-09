@@ -47,7 +47,7 @@ function ChecklistPreview({ list }) {
             <p className="fw-bold">Нужно подготовить твое рабочее место:</p>
             <div className="form-check">
               <label className="form-check-label" htmlFor="flexCheckDefault">
-                <div name="q1" onChange={changeHandler} style={{textDecoration: {`${list.q1} ? 'line-through' : ''`}}}checked={inputs.q1} className="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <div name="q1" onChange={changeHandler} checked={inputs.q1} className="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                   Наставник выдал мне пропуск
                 </div>
               </label>

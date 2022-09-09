@@ -27,7 +27,7 @@ export default function TemplateCard({ template }) {
           <p className="card-text">{`Сотрудник: ${template.userName}`}</p>
           <p className="card-text">{`Наставник: ${template.menthorName}`}</p>
           <p className="card-text">{`Прогресс: ${progressCounter(template)} %`}</p>
-          {/* <button type="button" onClick={clickHandler} className="btn btn-primary">Посмотреть лист</button> */}
+          {/* <a type="button" onClick={clickHandler} className="btn btn-primary">Посмотреть лист</button> */}
           <div className="progress">
             <div className="progress-bar bg-danger" role="progressbar" aria-label="Segment one" style={{ width: `${danger}%` }} aria-valuemin="0" aria-valuemax="100" />
             <div className="progress-bar bg-warning" role="progressbar" aria-label="Segment two" style={{ width: `${warning}%` }} aria-valuemin="0" aria-valuemax="100" />

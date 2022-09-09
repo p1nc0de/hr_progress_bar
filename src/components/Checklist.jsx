@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
+import progressCounter from '../utils/progressCounter';
+
 //
 function Checklist({ list }) {
   const { uniqueUrl } = useParams();
@@ -33,8 +35,28 @@ function Checklist({ list }) {
     })();
   }, [inputs]);
 
+  let progress = progressCounter(list);
+  const danger = (progress - 50) < 0 ? progress : 50;
+  progress -= danger;
+  let warning = 0;
+  let success = 0;
+  if (danger === 50 && progress) {
+    warning = (progress - 25) < 0 ? progress : 25;
+    progress -= warning;
+  }
+  if (warning === 25 && progress) {
+    success = (progress - 25) < 0 ? progress : 25;
+  }
+  // progress
+
   return (
     <div className="container">
+      {`Твой прогресс: ${progressCounter(list)} %`}
+      <div className="progress">
+        <div className="progress-bar bg-danger" role="progressbar" aria-label="Segment one" style={{ width: `${danger}%` }} aria-valuemin="0" aria-valuemax="100" />
+        <div className="progress-bar bg-warning" role="progressbar" aria-label="Segment two" style={{ width: `${warning}%` }} aria-valuemin="0" aria-valuemax="100" />
+        <div className="progress-bar bg-success" role="progressbar" aria-label="Segment three" style={{ width: `${success}%` }} aria-valuemin="0" aria-valuemax="100" />
+      </div>
       <form>
         <div className="d-grid gap-4 p-3">
           <div>

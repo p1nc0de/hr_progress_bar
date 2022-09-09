@@ -20,8 +20,15 @@ export default function Navbar({
       .then((data) => setChecklists(data))
       .then(() => navigate('/templates'));
   };
-  const id = 1; // ЗДЕСЬ ДОЛЖНО БЫТЬ ID ЧЕЛОВЕКА ИЗ СЕССИИИИИИИИ!!!!!!!!!!!!!!!!!!!!!!!!!
   const clickHandlerMy = async (e) => {
+    e.preventDefault();
+    fetch('/api/v1/templates')
+      .then((res) => res.json())
+      .then((data) => setMyChecklists(data))
+      .then(() => navigate(`/templates/${user.id}`));
+  };
+
+  const clickHandler = async (e) => {
     e.preventDefault();
     fetch('/api/v1/templates')
       .then((res) => res.json())
@@ -32,7 +39,7 @@ export default function Navbar({
   return (
     <nav className="navbar navbar-expand-lg bg-light">
       <div className="container-fluid">
-        <Link onClick={clickHandlerMy} className="navbar-brand" to="/templates">
+        <Link onClick={clickHandler} className="navbar-brand" to="/templates">
           <img src="/logo.png" alt="" width="30" height="26" style={{ 'margin-right': '10px' }} className="d-inline-block align-text-top" />
           Высокая гора
         </Link>
